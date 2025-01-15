@@ -67,7 +67,12 @@ class AuthController extends Controller
         $role = 'pengguna';
         if ($request->kode_unik === '123abc') {
             $role = 'admin_pusat';
+        } elseif ($request->kode_unik === '456def') {
+            $role = 'laboran';
+        } elseif ($request->kode_unik === '789ghi') {
+            $role = 'teknisi';
         }
+
         // Buat pengguna baru
         User::create([
             'name' => $request->name,
