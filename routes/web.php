@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserManagementController;
 
 
 Route::get('/', function () {
@@ -35,3 +36,10 @@ Route::middleware(['auth'])->group(function () {
     // Dashboard untuk Pengguna
     Route::get('/pengguna/dashboard', [DashboardController::class, 'penggunaDashboard'])->name('pengguna.dashboard');
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin_pusat/users', [UserManagementController::class, 'index'])->name('admin.users.index');
+    Route::get('/admin_pusat/users/{id}/edit', [UserManagementController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/admin_pusat/users/{id}', [UserManagementController::class, 'update'])->name('admin.users.update');
+});
+
