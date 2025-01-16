@@ -9,7 +9,7 @@ class UserManagementController extends Controller
 {
     public function index()
     {
-        $users = User::where('role', '!=', 'admin_pusat')->get(); // Mengambil semua user kecuali admin_pusat
+        $users = User::all(); 
         return view('admin_pusat.users.index', compact('users'));
     }
 
