@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\LabController;
+
 
 
 Route::get('/', function () {
@@ -38,8 +40,17 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin_pusat/users', [UserManagementController::class, 'index'])->name('admin.users.index');
-    Route::get('/admin_pusat/users/{id}/edit', [UserManagementController::class, 'edit'])->name('admin.users.edit');
-    Route::put('/admin_pusat/users/{id}', [UserManagementController::class, 'update'])->name('admin.users.update');
+    Route::get('/admin_pusat/users', [UserManagementController::class, 'index'])->name('users.index');
+    Route::get('/admin_pusat/users/{id}/edit', [UserManagementController::class, 'edit'])->name('users.edit');
+    Route::put('/admin_pusat/users/{id}', [UserManagementController::class, 'update'])->name('users.update');
+    Route::delete('/admin_pusat/users/{user}', [UserManagementController::class, 'destroy'])->name('users.destroy');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin_pusat/labs', [LabController::class, 'index'])->name('labs.index');
+    Route::get('/admin_pusat/labs/create', [LabController::class, 'create'])->name('labs.create');
+    Route::post('/admin_pusat/labs', [LabController::class, 'store'])->name('labs.store');
+    Route::get('/admin_pusat/labs/{lab}/edit', [LabController::class, 'edit'])->name('labs.edit');
+    Route::put('/admin_pusat/labs/{lab}', [LabController::class, 'update'])->name('labs.update');
+    Route::delete('/admin_pusat/labs/{lab}', [LabController::class, 'destroy'])->name('labs.destroy');
+});

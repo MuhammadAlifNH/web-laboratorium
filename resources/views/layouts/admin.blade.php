@@ -19,9 +19,6 @@
                         <a class="nav-link" href="{{ route('admin.dashboard') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.users.index') }}">Manajemen Pengguna</a>
-                    </li>
-                    <li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST" class="d-inline">
                             @csrf
                             <button type="submit" class="btn btn-link nav-link" style="text-decoration: none;">Logout</button>

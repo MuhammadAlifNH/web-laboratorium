@@ -17,7 +17,7 @@ class UserManagementController extends Controller
     {
         $user = User::findOrFail($id);
         if ($user->role === 'admin_pusat') {
-            return redirect()->route('admin.users.index')->with('error', 'Tidak dapat mengubah role admin pusat.');
+            return redirect()->route('users.index')->with('error', 'Tidak dapat mengubah role admin_pusat.');
         }
         return view('admin_pusat.users.edit', compact('user'));
     }
@@ -31,12 +31,30 @@ class UserManagementController extends Controller
         $user = User::findOrFail($id);
 
         if ($user->role === 'admin_pusat') {
-            return redirect()->route('admin.users.index')->with('error', 'Tidak dapat mengubah role admin pusat.');
+            return redirect()->route('users.index')->with('error', 'Tidak dapat mengubah role admin_pusat.');
         }
 
         $user->role = $request->role;
         $user->save();
 
-        return redirect()->route('admin.users.index')->with('success', 'Role pengguna berhasil diperbarui.');
+        return redirect()->route('users.index')->with('success', 'Role pengguna berhasil diperbarui.');
     }
+
+    public function destroy($id)
+    {
+        // Cari user berdasarkan ID
+        $user = User::findOrFail($id);
+
+    // Cek apakah role adalah admin_pusat
+        if ($user->role === 'admin_pusat') {
+            return redirect()->route('users.index')
+                ->with('error', 'Pengguna dengan role admin_pusat tidak dapat dihapus.');
+        }
+
+        // Hapus pengguna
+        $user->delete();
+
+        return redirect()->route('users.index')
+            ->with('success', 'Pengguna berhasil dihapus.');
+        }
 }

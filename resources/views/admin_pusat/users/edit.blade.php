@@ -9,7 +9,7 @@
 
     <p><strong>Nama Akun:</strong> {{ $user->name }}</p>
 
-    <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
+    <form action="{{ route('users.update', $user->id) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -23,6 +23,6 @@
         </div>
 
         <button type="submit" class="btn btn-success">Simpan Perubahan</button>
-        <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Batal</a>
+        <a href="{{ route('users.index') }}" class="btn btn-secondary">Batal</a>
     </form>
 @endsection
