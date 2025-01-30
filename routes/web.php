@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\LabController;
+use App\Http\Controllers\FakultasController;
 
 
 
@@ -53,4 +54,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin_pusat/labs/{lab}/edit', [LabController::class, 'edit'])->name('labs.edit');
     Route::put('/admin_pusat/labs/{lab}', [LabController::class, 'update'])->name('labs.update');
     Route::delete('/admin_pusat/labs/{lab}', [LabController::class, 'destroy'])->name('labs.destroy');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin_pusat/fakultas', [FakultasController::class, 'index'])->name('fakultas.index');
+    Route::get('/admin_pusat/fakultas/create', [FakultasController::class, 'create'])->name('fakultas.create');
+    Route::post('/admin_pusat/fakultas', [FakultasController::class, 'store'])->name('fakultas.store');
+    Route::get('/admin_pusat/fakultas/{fakultas}/edit', [FakultasController::class, 'edit'])->name('fakultas.edit');
+    Route::put('/admin_pusat/fakultas/{fakultas}', [FakultasController::class, 'update'])->name('fakultas.update');
+    Route::delete('/admin_pusat/fakultas/{fakultas}', [FakultasController::class, 'destroy'])->name('fakultas.destroy');
 });

@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Edit Lab</h1>
+    <a href="{{ route('labs.index') }}" class="btn btn-secondary mb-3">Kembali</a>
     <form action="{{ route('labs.update', $lab) }}" method="POST">
         @csrf
         @method('PUT')

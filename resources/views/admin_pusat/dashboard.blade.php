@@ -6,6 +6,7 @@
     <p>Selamat datang, <strong>{{ Auth::user()->name }}</strong> :D </p>
 
     <a href="{{ route('users.index') }}" class="btn btn-primary">Manajemen Pengguna</a>
+    <a href="{{ route('fakultas.index') }}" class="btn btn-primary">Kelola Fakultas</a>
     <a href="{{ route('labs.index') }}" class="btn btn-primary">Kelola Lab</a>
     
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
