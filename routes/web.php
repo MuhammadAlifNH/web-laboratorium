@@ -6,6 +6,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\LabController;
 use App\Http\Controllers\FakultasController;
+use App\Http\Controllers\PerLunakController;
+use App\Http\Controllers\PerKerasController;
 
 
 
@@ -64,3 +66,23 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/admin_pusat/fakultas/{fakultas}', [FakultasController::class, 'update'])->name('fakultas.update');
     Route::delete('/admin_pusat/fakultas/{fakultas}', [FakultasController::class, 'destroy'])->name('fakultas.destroy');
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin_pusat/per_lunak', [PerLunakController::class, 'index'])->name('perlunak.index');
+    Route::get('/admin_pusat/per_lunak/create', [PerLunakController::class, 'create'])->name('perlunak.create');
+    Route::post('/admin_pusat/per_lunak', [PerLunakController::class, 'store'])->name('perlunak.store');
+    Route::get('/perlunak/{perlunak}/edit', [PerlunakController::class, 'edit'])->name('perlunak.edit');
+    Route::put('/perlunak/{perlunak}', [PerlunakController::class, 'update'])->name('perlunak.update'); 
+    Route::delete('/admin_pusat/per_lunak/{perLunak}', [PerLunakController::class, 'destroy'])->name('perlunak.destroy');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin_pusat/per_keras', [PerKerasController::class, 'index'])->name('perkeras.index');
+    Route::get('/admin_pusat/per_keras/create', [PerKerasController::class, 'create'])->name('perkeras.create');
+    Route::post('/admin_pusat/per_keras', [PerKerasController::class, 'store'])->name('perkeras.store');
+    Route::get('/admin_pusat/per_keras/{perKeras}/edit', [PerKerasController::class, 'edit'])->name('perkeras.edit');
+    Route::put('/admin_pusat/per_keras/{perKeras}', [PerKerasController::class, 'update'])->name('perkeras.update');
+    Route::delete('/admin_pusat/per_keras/{perKeras}', [PerKerasController::class, 'destroy'])->name('perkeras.destroy');
+});
+
+Route::get('/get-labs/{fakultasId}', [LabController::class, 'getLabs']);

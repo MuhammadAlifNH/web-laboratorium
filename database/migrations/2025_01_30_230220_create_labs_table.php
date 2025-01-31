@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('per_lunak', function (Blueprint $table) {
+        Schema::create('labs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('fakultas_id')->constrained('fakultas')->onDelete('cascade');
-            $table->foreignId('lab_id')->constrained('labs')->onDelete('cascade');
-            $table->string('nama');
-            $table->string('versi');
+            $table->unsignedBigInteger('fakultas_id'); // Pakai unsignedBigInteger
+            $table->string('no_ruangan');
+            $table->string('nama_ruangan');
             $table->timestamps();
+        
+            // Foreign Key
+            $table->foreign('fakultas_id')->references('id')->on('fakultas')->onDelete('cascade');
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('per_lunak');
+        Schema::dropIfExists('labs');
     }
 };
