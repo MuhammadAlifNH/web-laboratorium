@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="nama">Nama</label>
+            <label for="nama">Nama Perangkat Lunak</label>
             <input type="text" name="nama" id="nama" class="form-control" value="{{ $perlunak->nama }}" readonly>
         </div>
         <div class="form-group">

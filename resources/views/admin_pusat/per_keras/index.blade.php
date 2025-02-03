@@ -1,13 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
     <h1>Daftar Perangkat Keras</h1>
-    <a href="{{ route('perkeras.create') }}" class="btn btn-primary mb-3">Tambah Perangkat Keras</a>
-    <table class="table table-bordered">
+    <a href="{{ route('perkeras.create') }}" class="btn btn-primary">Tambah Perangkat Keras</a>
+    <table class="table mt-3">
         <thead>
             <tr>
-                <th>No</th>
                 <th>Fakultas</th>
                 <th>Lab</th>
                 <th>Nama</th>
@@ -17,24 +16,27 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($perkeras as $item)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->fakultas->nama_fakultas }}</td>
-                    <td>{{ $item->lab->nama_ruangan }}</td>
-                    <td>{{ $item->nama }}</td>
-                    <td>{{ $item->merek }}</td>
-                    <td>{{ $item->tahun_pembelian }}</td>
-                    <td>
-                        <a href="{{ route('perkeras.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('perkeras.destroy', $item->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
+            @forelse($perKeras as $item)
+            <tr>
+                <td>{{ $item->fakultas ? $item->fakultas->nama_fakultas : '-' }}</td>
+                <td>{{ $item->lab ? $item->lab->no_ruangan : '-' }}</td>
+                <td>{{ $item->nama }}</td>
+                   <td>{{ $item->merek }}</td>
+                <td>{{ $item->tahun_pembelian }}</td>
+                <td>
+                    <a href="{{ route('perkeras.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ route('perkeras.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus perangkat lunak ini?')" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="5" class="text-center">Tidak ada data perangkat keras.</td>
+            </tr>
+            @endforelse
         </tbody>
     </table>
 </div>

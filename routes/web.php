@@ -80,8 +80,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin_pusat/per_keras', [PerKerasController::class, 'index'])->name('perkeras.index');
     Route::get('/admin_pusat/per_keras/create', [PerKerasController::class, 'create'])->name('perkeras.create');
     Route::post('/admin_pusat/per_keras', [PerKerasController::class, 'store'])->name('perkeras.store');
-    Route::get('/admin_pusat/per_keras/{perKeras}/edit', [PerKerasController::class, 'edit'])->name('perkeras.edit');
-    Route::put('/admin_pusat/per_keras/{perKeras}', [PerKerasController::class, 'update'])->name('perkeras.update');
+    Route::get('/perkeras/{perkeras}/edit', [PerKerasController::class, 'edit'])->name('perkeras.edit');
+    Route::put('/perkeras/{perkeras}', [PerKerasController::class, 'update'])->name('perkeras.update');
     Route::delete('/admin_pusat/per_keras/{perKeras}', [PerKerasController::class, 'destroy'])->name('perkeras.destroy');
 });
 
