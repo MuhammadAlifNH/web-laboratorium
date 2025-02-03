@@ -25,7 +25,7 @@
                 <td>{{ $item->tahun_pembelian }}</td>
                 <td>
                     <a href="{{ route('perkeras.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('perkeras.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus perangkat lunak ini?')" style="display:inline;">
+                    <form action="{{ route('perkeras.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus perangkat keras ' + '{{ $item->nama}} ' + '{{ $item->merek }}'+' ini?')" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

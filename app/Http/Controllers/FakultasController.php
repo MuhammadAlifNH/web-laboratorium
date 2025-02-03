@@ -28,21 +28,6 @@ class FakultasController extends Controller
         return redirect()->route('fakultas.index');
     }
 
-    public function edit(Fakultas $fakultas)
-    {
-        return view('admin_pusat.fakultas.edit', compact('fakultas'));
-    }
-
-    public function update(Request $request, Fakultas $fakultas)
-    {
-        $request->validate([
-            'nama_fakultas' => 'required|unique:fakultas'
-        ]);
-
-        $fakultas->update($request->all());
-        return redirect()->route('fakultas.index');
-    }
-
     public function destroy(Fakultas $fakultas)
     {
         $fakultas->delete();

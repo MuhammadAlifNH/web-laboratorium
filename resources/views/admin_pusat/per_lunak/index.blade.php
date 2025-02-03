@@ -23,7 +23,7 @@
                 <td>{{ $item->versi }}</td>
                 <td>
                     <a href="{{ route('perlunak.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('perlunak.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus perangkat lunak ini?')" style="display:inline;">
+                    <form action="{{ route('perlunak.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus perangkat lunak ' + '{{ $item->nama}} ' + '{{ $item->versi }}'+' ini?')" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

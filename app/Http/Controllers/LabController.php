@@ -10,8 +10,10 @@ class LabController extends Controller
 {
     public function index()
     {
-        $labs = Lab::with('fakultas')->get();
-        return view('admin_pusat.labs.index', compact('labs'));
+        $labs = Lab::with('fakultas')->get(); // Ambil data lab beserta fakultasnya
+        $fakultas = Fakultas::all(); // Ambil semua data fakultas
+
+        return view('admin_pusat.labs.index', compact('labs', 'fakultas'));
     }
 
     public function create()
