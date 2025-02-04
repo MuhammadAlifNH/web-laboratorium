@@ -12,14 +12,14 @@ class PerLunakController extends Controller
     public function index()
     {
         $perLunak = PerLunak::with(['fakultas', 'lab'])->get();
-        return view('admin_pusat.per_lunak.index', compact('perLunak'));
+        return view('fitur.per_lunak.index', compact('perLunak'));
     }
 
     public function create()
     {
         $fakultas = Fakultas::all();
         $labs = Lab::all();
-        return view('admin_pusat.per_lunak.create', compact('fakultas', 'labs'));
+        return view('fitur.per_lunak.create', compact('fakultas', 'labs'));
     }
 
     public function store(Request $request)
@@ -49,7 +49,7 @@ class PerLunakController extends Controller
         $fakultas = Fakultas::all();
         $labs = Lab::where('fakultas_id', $perlunak->fakultas_id)->get();
 
-        return view('admin_pusat.per_lunak.edit', compact('perlunak', 'fakultas', 'labs'));
+        return view('fitur.per_lunak.edit', compact('perlunak', 'fakultas', 'labs'));
     }
 
 

@@ -13,13 +13,13 @@ class LabController extends Controller
         $labs = Lab::with('fakultas')->get(); // Ambil data lab beserta fakultasnya
         $fakultas = Fakultas::all(); // Ambil semua data fakultas
 
-        return view('admin_pusat.labs.index', compact('labs', 'fakultas'));
+        return view('fitur.labs.index', compact('labs', 'fakultas'));
     }
 
     public function create()
     {
         $fakultas = Fakultas::all();
-        return view('admin_pusat.labs.create', compact('fakultas'));
+        return view('fitur.labs.create', compact('fakultas'));
     }
 
     public function store(Request $request)
@@ -46,7 +46,7 @@ class LabController extends Controller
     public function edit(Lab $lab)
     {
         $fakultas = Fakultas::all();
-        return view('admin_pusat.labs.edit', compact('lab', 'fakultas'));
+        return view('fitur.labs.edit', compact('lab', 'fakultas'));
     }
 
     public function update(Request $request, Lab $lab)

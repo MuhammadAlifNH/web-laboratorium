@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.web')
 
 @section('content')
     <h1>Daftar Pengguna</h1>

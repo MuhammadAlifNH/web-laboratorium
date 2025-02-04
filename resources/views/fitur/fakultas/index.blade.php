@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.web')
 
 @section('content')
 <div class="container">
@@ -13,7 +13,7 @@
             </tr>
         </thead>
         <tbody>
-        @foreach ($fakultas as $item)
+        @forelse ($fakultas as $item)
             <tr>
                 <td>{{ $item->nama_fakultas }}</td>
                 <td>
@@ -24,7 +24,11 @@
                     </form>
                 </td>
             </tr>
-            @endforeach
+            @empty
+            <tr>
+                <td colspan="5" class="text-center">Tidak ada data fakultas.</td>
+            </tr>
+            @endforelse
         </tbody>
     </table>
 </div>

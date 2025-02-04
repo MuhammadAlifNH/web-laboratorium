@@ -10,7 +10,7 @@ class UserManagementController extends Controller
     public function index()
     {
         $users = User::all(); 
-        return view('admin_pusat.users.index', compact('users'));
+        return view('fitur.users.index', compact('users'));
     }
 
     public function edit($id)
@@ -19,7 +19,7 @@ class UserManagementController extends Controller
         if ($user->role === 'admin_pusat') {
             return redirect()->route('users.index')->with('error', 'Tidak dapat mengubah role admin_pusat.');
         }
-        return view('admin_pusat.users.edit', compact('user'));
+        return view('fitur.users.edit', compact('user'));
     }
 
     public function update(Request $request, $id)

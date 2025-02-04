@@ -10,7 +10,11 @@ class DashboardController extends Controller
     public function adminPusatDashboard()
     {
         if (Auth::check() && Auth::user()->role === 'admin_pusat') {
-            return view('admin_pusat.dashboard');
+            return view('dashboard.adminPusat', [
+                'title' => 'Admin Pusat Dashboard',
+                'navbarTitle' => 'Admin Pusat',
+                'homeRoute' => route('admin.dashboard'),
+            ]);
         }
 
         return redirect()->route('login');
@@ -19,7 +23,11 @@ class DashboardController extends Controller
     public function laboranDashboard()
     {
         if (Auth::check() && Auth::user()->role === 'laboran') {
-            return view('laboran.dashboard');
+            return view('dashboard.laboran', [
+                'title' => 'Laboran Dashboard',
+                'navbarTitle' => 'Laboran',
+                'homeRoute' => route('laboran.dashboard')
+            ]);
         }
 
         return redirect()->route('login');
@@ -28,7 +36,11 @@ class DashboardController extends Controller
     public function teknisiDashboard()
     {
         if (Auth::check() && Auth::user()->role === 'teknisi') {
-            return view('teknisi.dashboard');
+            return view('dashboard.teknisi', [
+                'title' => 'Teknisi Dashboard',
+                'navbarTitle' => 'Teknisi',
+                'homeRoute' => route('teknisi.dashboard')
+            ]);
         }
 
         return redirect()->route('login');
@@ -37,7 +49,11 @@ class DashboardController extends Controller
     public function penggunaDashboard()
     {
         if (Auth::check() && Auth::user()->role === 'pengguna') {
-            return view('pengguna.dashboard');
+            return view('dashboard.pengguna', [
+                'title' => 'Pengguna Dashboard',
+                'navbarTitle' => 'Pengguna',
+                'homeRoute' => route('pengguna.dashboard')
+            ]);
         }
 
         return redirect()->route('login');

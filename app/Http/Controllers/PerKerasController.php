@@ -12,14 +12,14 @@ class PerKerasController extends Controller
     public function index()
     {
         $perKeras = PerKeras::with(['fakultas', 'lab'])->get();
-        return view('admin_pusat.per_keras.index', compact('perKeras'));
+        return view('fitur.per_keras.index', compact('perKeras'));
     }
 
     public function create()
     {
         $fakultas = Fakultas::all();
         $labs = Lab::all();
-        return view('admin_pusat.per_keras.create', compact('fakultas', 'labs'));
+        return view('fitur.per_keras.create', compact('fakultas', 'labs'));
     }
 
     public function store(Request $request)
@@ -51,7 +51,7 @@ class PerKerasController extends Controller
         $fakultas = Fakultas::all();
         $labs = Lab::where('fakultas_id', $perkeras->fakultas_id)->get();
 
-        return view('admin_pusat.per_keras.edit', compact('perkeras', 'fakultas', 'labs'));
+        return view('fitur.per_keras.edit', compact('perkeras', 'fakultas', 'labs'));
     }
 
     public function update(Request $request, PerKeras $perkeras)

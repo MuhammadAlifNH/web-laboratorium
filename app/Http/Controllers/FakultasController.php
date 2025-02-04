@@ -10,12 +10,12 @@ class FakultasController extends Controller
     public function index()
     {
         $fakultas = Fakultas::all();
-        return view('admin_pusat.fakultas.index', compact('fakultas'));
+        return view('fitur.fakultas.index', compact('fakultas'));
     }
 
     public function create()
     {
-        return view('admin_pusat.fakultas.create');
+        return view('fitur.fakultas.create');
     }
 
     public function store(Request $request)
