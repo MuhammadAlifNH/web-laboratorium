@@ -31,6 +31,10 @@
                 <input type="text" id="kode_unik" name="kode_unik" placeholder="Masukkan kode unik jika ada">
             </div>
             <button type="submit">Register</button>
+            <p class="mt-4 text-gray-600 text-center">
+                Already have an account? 
+                <a href="{{ route('login') }}" class="text-red-600 font-bold">Login</a>
+            </p>
         </form>
         
         @if ($errors->any())
@@ -38,6 +42,9 @@
                 {{ $errors->first() }}
             </div>
         @endif
+    </div>
+    <div>
+    
     </div>
 </body>
 </html>

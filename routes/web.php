@@ -86,3 +86,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/get-labs/{fakultasId}', [LabController::class, 'getLabs']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard'); // Pastikan file resources/views/dashboard.blade.php ada
+})->name('dashboard');
