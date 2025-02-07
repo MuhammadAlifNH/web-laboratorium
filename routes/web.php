@@ -10,7 +10,6 @@ use App\Http\Controllers\PerLunakController;
 use App\Http\Controllers\PerKerasController;
 
 
-
 Route::get('/', function () {
     return view('welcome');
 });
